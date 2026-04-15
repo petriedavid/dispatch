@@ -1,12 +1,19 @@
+// app/page.tsx
 import { supabase } from '@/lib/supabase'
 
 // Forces Next.js to dynamically check the DB status on every load
 export const revalidate = 0;
 
 export default async function Home() {
-  // A lightweight check just to see if the DB is reachable
-  const { error } = await supabase.from('texts').select('id').limit(1);
+  // Fetch the most recent text row from your database
+  const { data, error } = await supabase
+    .from('texts')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(1);
+
   const isDbConnected = !error;
+  const dbRecord = data?.[0];
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-emerald-500/30">
@@ -22,15 +29,7 @@ export default async function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center pt-32 pb-24 px-4 text-center max-w-4xl mx-auto mt-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-medium text-emerald-400 mb-8">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          API v1.0 Now Live
-        </div>
-
+      <section className="flex flex-col items-center justify-center pt-24 pb-16 px-4 text-center max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
           Automated SMS workflows.<br className="hidden md:block" />
           <span className="text-zinc-500">Built for compliance.</span>
@@ -39,6 +38,57 @@ export default async function Home() {
         <p className="text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed">
           The underlying infrastructure for modern businesses. Dispatch provides a seamless, verifiable Compliance-as-a-Service layer directly through SMS.
         </p>
+
+        {/* Live Database Feed Card */}
+        <div className="w-full max-w-2xl mb-12 text-left bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-zinc-900/50">
+            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Live Database Feed
+            </div>
+            {isDbConnected ? (
+              <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full border border-emerald-400/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Connected to Supabase
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 text-xs font-mono text-red-400 bg-red-400/10 px-2 py-1 rounded-full border border-red-400/20">
+                <div className="h-2 w-2 bg-red-500 rounded-full"></div>
+                Connection Failed
+              </div>
+            )}
+          </div>
+
+          <div className="p-4 font-mono text-sm">
+            {dbRecord ? (
+              <div className="space-y-2">
+                <div className="flex">
+                  <span className="text-zinc-500 w-24">ID:</span>
+                  <span className="text-zinc-300">{dbRecord.id.split('-')[0]}...</span>
+                </div>
+                <div className="flex">
+                  <span className="text-zinc-500 w-24">Phone:</span>
+                  <span className="text-emerald-400">{dbRecord.phone}</span>
+                </div>
+                <div className="flex">
+                  <span className="text-zinc-500 w-24">Message:</span>
+                  <span className="text-zinc-300">"{dbRecord.message}"</span>
+                </div>
+                <div className="flex">
+                  <span className="text-zinc-500 w-24">Status:</span>
+                  <span className="text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20 text-xs inline-block">
+                    {dbRecord.status}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <p className="text-zinc-500 italic">Database is connected, but the texts table is empty. Insert a row to see it here.</p>
+            )}
+          </div>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <button className="px-8 py-4 bg-white text-zinc-950 font-semibold rounded-lg hover:bg-zinc-200 transition-all">
@@ -66,23 +116,9 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Footer / System Status */}
-      <footer className="border-t border-zinc-900 mt-12 py-8 text-center flex flex-col items-center justify-center gap-4">
-        <p className="text-zinc-600 text-sm">© 2026 Dispatch Systems. All rights reserved.</p>
-
-        {/* Subtle Database Connection Check */}
-        <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="text-zinc-500">System Status:</span>
-          {isDbConnected ? (
-            <span className="text-emerald-500 flex items-center gap-1">
-              <div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Operational
-            </span>
-          ) : (
-            <span className="text-red-500 flex items-center gap-1">
-              <div className="h-1.5 w-1.5 bg-red-500 rounded-full"></div> DB Disconnected
-            </span>
-          )}
-        </div>
+      {/* Footer */}
+      <footer className="border-t border-zinc-900 mt-12 py-8 text-center text-zinc-600 text-sm">
+        <p>© 2026 Dispatch Systems. All rights reserved.</p>
       </footer>
     </main>
   )
