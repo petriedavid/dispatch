@@ -30,7 +30,7 @@ export default function FAQ() {
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-emerald-500/30 font-sans flex flex-col">
-            {/* Navigation (Matches Home Page) */}
+            {/* Navigation */}
             <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-900">
                 <div className="flex items-center justify-between px-6 py-4 md:px-12 max-w-7xl mx-auto">
                     <Link href="/" className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2">
@@ -84,6 +84,40 @@ export default function FAQ() {
                     </button>
                 </div>
             </section>
+
+            {/* Business Info / Footer */}
+            <footer className="border-t border-zinc-900 pt-16 pb-8 bg-zinc-950 mt-auto">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 border-b border-zinc-900 pb-12">
+                    <div className="col-span-1 md:col-span-2">
+                        <div className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 mb-4">
+                            <div className="h-3 w-3 bg-white rounded-sm"></div>
+                            Dispatch
+                        </div>
+                        <p className="text-zinc-500 text-sm max-w-xs leading-relaxed">
+                            Secure, compliant SMS infrastructure designed to eliminate liability and automate operational workflows.
+                        </p>
+                    </div>
+                    <div>
+                        <h5 className="font-semibold mb-4 text-zinc-200">Platform</h5>
+                        <ul className="space-y-2 text-sm text-zinc-500">
+                            <li><Link href="/pricing" className="hover:text-emerald-400 transition-colors">Pricing</Link></li>
+                            <li><Link href="/faq" className="hover:text-emerald-400 transition-colors">FAQ</Link></li>
+                            <li><Link href="#" className="hover:text-emerald-400 transition-colors">API Reference</Link></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 className="font-semibold mb-4 text-zinc-200">Company</h5>
+                        <ul className="space-y-2 text-sm text-zinc-500">
+                            <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                            <li><a href="mailto:support@dispatch.dev" className="hover:text-white transition-colors">support@dispatch.dev</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="text-center text-zinc-600 text-xs font-mono">
+                    © 2026 Dispatch. Designed with precision.
+                </div>
+            </footer>
         </main>
     )
 }

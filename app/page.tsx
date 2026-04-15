@@ -11,7 +11,7 @@ export default async function Home() {
     .limit(1);
 
   const isDbConnected = !error;
-  // If the DB is empty, we'll show a placeholder that perfectly illustrates the new flow
+  // Fallback data if the DB is empty, perfectly illustrating the missed-call flow
   const dbRecord = data?.[0] || {
     phone: "+1 (555) 019-8372",
     status: "delivered",
@@ -54,7 +54,7 @@ export default async function Home() {
         </h1>
 
         <p className="text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed">
-          When your crew is busy, missed calls mean lost money as clients call the next guy on Google. Dispatch detects missed calls and instantly texts them to lock in the lead.
+          When your crew is busy, missed calls mean lost money as clients call the next guy on Google. Dispatch detects missed calls and instantly texts them to lock in the lead for just 5 cents.
         </p>
 
         {/* Live Database Feed Card */}
@@ -166,23 +166,57 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Trust & Compliance Section */}
+      {/* Trust & Value Section */}
       <section className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-            <h3 className="text-lg font-semibold mb-2 text-zinc-100">100% Legal Compliance</h3>
-            <p className="text-zinc-400 text-sm leading-relaxed">Don't get sued. Our system enforces strict TCPA compliance and handles opt-outs automatically so you never text someone who said "STOP".</p>
+            <h3 className="text-lg font-semibold mb-2 text-zinc-100">Pays for Itself</h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">At $45/month and 5 cents a text, the system literally pays for itself the very first time it saves a missed call from going to a competitor.</p>
           </div>
           <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-            <h3 className="text-lg font-semibold mb-2 text-zinc-100">Immutable Audit Logs</h3>
-            <p className="text-zinc-400 text-sm leading-relaxed">Every message is securely recorded and timestamped in our PostgreSQL database. If a dispute arises, you have a bulletproof ledger.</p>
+            <h3 className="text-lg font-semibold mb-2 text-zinc-100">100% Legal Protection</h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">Predatory lawyers sue small businesses for texting without consent. Our system handles opt-outs and compliance automatically, acting as a legal shield.</p>
           </div>
           <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50">
-            <h3 className="text-lg font-semibold mb-2 text-zinc-100">Carrier Approved</h3>
-            <p className="text-zinc-400 text-sm leading-relaxed">We handle the A2P 10DLC registration nightmares. Your texts get delivered to your customers instead of ending up in the spam folder.</p>
+            <h3 className="text-lg font-semibold mb-2 text-zinc-100">Zero Maintenance</h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">You don't need to be an IT guy. We handle the carrier registrations, the routing, and the database logging entirely in the background.</p>
           </div>
         </div>
       </section>
+
+      {/* Business Info / Footer */}
+      <footer className="border-t border-zinc-900 pt-16 pb-8 bg-zinc-950 mt-auto">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 border-b border-zinc-900 pb-12">
+          <div className="col-span-1 md:col-span-2">
+            <div className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 mb-4">
+              <div className="h-3 w-3 bg-white rounded-sm"></div>
+              Dispatch
+            </div>
+            <p className="text-zinc-500 text-sm max-w-xs leading-relaxed">
+              Secure, compliant SMS infrastructure designed to eliminate liability and automate operational workflows.
+            </p>
+          </div>
+          <div>
+            <h5 className="font-semibold mb-4 text-zinc-200">Platform</h5>
+            <ul className="space-y-2 text-sm text-zinc-500">
+              <li><Link href="/pricing" className="hover:text-emerald-400 transition-colors">Pricing</Link></li>
+              <li><Link href="/faq" className="hover:text-emerald-400 transition-colors">FAQ</Link></li>
+              <li><Link href="#" className="hover:text-emerald-400 transition-colors">API Reference</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-semibold mb-4 text-zinc-200">Company</h5>
+            <ul className="space-y-2 text-sm text-zinc-500">
+              <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><a href="mailto:support@dispatch.dev" className="hover:text-white transition-colors">support@dispatch.dev</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="text-center text-zinc-600 text-xs font-mono">
+          © 2026 Dispatch. Designed with precision.
+        </div>
+      </footer>
     </main>
   )
 }
