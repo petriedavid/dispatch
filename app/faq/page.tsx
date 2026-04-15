@@ -3,28 +3,28 @@ import Link from 'next/link'
 export default function FAQ() {
     const faqs = [
         {
+            question: "How much does it actually cost?",
+            answer: "Our Production plan is a flat $45/month plus $0.05 per text message. Think of it this way: losing a missed call to the next guy on Google costs you anywhere from $500 to $5,000. The automated text message that saves that job costs you exactly five cents."
+        },
+        {
+            question: "What exactly is the 'Missed-Call Reactivator'?",
+            answer: "If you or your crew miss a call while on a job, our system detects it and instantly fires a compliant SMS (e.g., 'Hey, we are currently on a job but you are next in our queue. What do you need fixed?'). It turns dead air into booked appointments without you having to touch your phone."
+        },
+        {
             question: "I run a local service business. Why do I need 'compliance' just to text my customers?",
             answer: "Because predatory lawyers are actively targeting small businesses for TCPA (Telephone Consumer Protection Act) violations. A single non-compliant text message can carry a fine of $500 to $1,500. Dispatch acts as your automated legal shield, ensuring every text has documented consent before it leaves your system."
         },
         {
-            question: "What is the 'Ghost Lead' Reactivator?",
-            answer: "If you miss a call while on a job, you usually lose that lead to the next guy on Google. Our system detects the missed call and automatically fires a compliant SMS (e.g., 'Hey, sorry we missed you! How can we help?'). It turns dead air into booked appointments without you touching your phone."
-        },
-        {
             question: "What is A2P 10DLC, and do I have to deal with it?",
-            answer: "A2P 10DLC is a strict new regulation from mobile carriers (AT&T, Verizon, T-Mobile) that blocks unverified business texts as spam. It is a massive headache of paperwork. If you use Dispatch, you don't have to worry about it—we handle the carrier registration and trust-scoring for you."
+            answer: "A2P 10DLC is a strict new regulation from mobile carriers (AT&T, Verizon, T-Mobile) that blocks unverified business texts as spam. It is a massive paperwork headache. If you use Dispatch, you don't have to worry about it—we handle the carrier registration and trust-scoring for you behind the scenes."
         },
         {
             question: "I'm not a tech company. Is this going to be a nightmare to set up?",
-            answer: "Not at all. While we offer an API for developers, our core platform is 'set-and-forget.' You can plug us directly into your existing CRM or use our dashboard. We handle the heavy lifting of routing, logging, and compliance in the background."
+            answer: "Not at all. While we offer a robust API for developers, our core platform is designed to be 'set-and-forget' for business owners. You can plug us directly into your existing CRM or use our dashboard, and we handle the heavy lifting of routing, logging, and compliance in the background."
         },
         {
             question: "What happens if a customer replies 'STOP'?",
             answer: "Our infrastructure intercepts opt-out keywords instantly. We automatically block any future messages to that number at the network level, ensuring you can't accidentally break the law even if an employee tries to text them manually."
-        },
-        {
-            question: "Can I export my logs if I get audited or sued?",
-            answer: "Yes. Every single message, consent flag, and timestamp is stored in an immutable PostgreSQL ledger. If a dispute ever arises, you can export a cryptographically verified audit log with one click."
         }
     ];
 
@@ -63,7 +63,7 @@ export default function FAQ() {
                             className="bg-zinc-900/80 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors shadow-lg"
                         >
                             <h3 className="text-lg font-semibold mb-3 text-zinc-100 flex items-start gap-3">
-                                <span className="text-emerald-500 mt-1">
+                                <span className="text-emerald-500 mt-1 flex-shrink-0">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                                 </span>
                                 {faq.question}

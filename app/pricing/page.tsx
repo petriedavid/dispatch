@@ -33,9 +33,9 @@ export default function Pricing() {
                     <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-8 shadow-xl flex flex-col">
                         <h3 className="text-xl font-bold text-zinc-300 mb-2">Sandbox</h3>
                         <div className="text-4xl font-extrabold mb-2">$0<span className="text-lg text-zinc-500 font-medium">/mo</span></div>
-                        <p className="text-sm text-zinc-400 mb-6">Perfect for testing the API.</p>
+                        <p className="text-sm text-zinc-400 mb-6">Perfect for testing the API and dashboard.</p>
                         <ul className="space-y-3 mb-8 text-sm text-zinc-300 flex-grow">
-                            <li className="flex items-center gap-2"><div className="h-1 w-1 bg-zinc-600 rounded-full"></div> 100 SMS per month</li>
+                            <li className="flex items-center gap-2"><div className="h-1 w-1 bg-zinc-600 rounded-full"></div> 100 SMS per month included</li>
                             <li className="flex items-center gap-2"><div className="h-1 w-1 bg-zinc-600 rounded-full"></div> Standard Support</li>
                         </ul>
                         <button className="w-full py-3 bg-zinc-900 border border-zinc-800 rounded-lg font-semibold text-zinc-300 hover:bg-zinc-800 transition-colors">Start Building</button>
@@ -47,11 +47,12 @@ export default function Pricing() {
                             Most Popular
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2">Production</h3>
-                        <div className="text-4xl font-extrabold mb-2">$49<span className="text-lg text-zinc-500 font-medium">/mo</span></div>
-                        <p className="text-sm text-emerald-400/80 mb-6">For live business operations.</p>
+                        <div className="text-4xl font-extrabold mb-2">$45<span className="text-lg text-zinc-500 font-medium">/mo</span></div>
+                        <p className="text-sm text-emerald-400/80 mb-6">The ultimate revenue safety net.</p>
                         <ul className="space-y-3 mb-8 text-sm text-zinc-200 flex-grow">
                             <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Base platform fee</li>
-                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> $0.015 per SMS segment</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> $0.05 per SMS segment</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Missed-call lead reactivator</li>
                             <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Immutable ledger access</li>
                         </ul>
                         <button className="w-full py-3 bg-white text-zinc-950 rounded-lg font-bold hover:bg-zinc-200 transition-colors">Deploy Now</button>
