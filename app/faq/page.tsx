@@ -1,4 +1,6 @@
+// app/faq/page.tsx
 import Link from 'next/link'
+import Particles from '@/lib/particles'
 
 export default function FAQ() {
     const faqs = [
@@ -29,19 +31,22 @@ export default function FAQ() {
     ];
 
     return (
-        <main className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-emerald-500/30 font-sans flex flex-col">
+        <main className="min-h-screen bg-transparent text-zinc-50 selection:bg-emerald-500/30 font-sans flex flex-col relative overflow-hidden">
+            {/* Floating Particles Background */}
+            <Particles />
+
             {/* Navigation */}
-            <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-900">
+            <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/70 border-b border-zinc-900/50">
                 <div className="flex items-center justify-between px-6 py-4 md:px-12 max-w-7xl mx-auto">
-                    <Link href="/" className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2">
-                        <div className="h-3 w-3 bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                    <Link href="/" className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 group">
+                        <div className="h-3 w-3 bg-white rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.9)] transition-all duration-300"></div>
                         Dispatch
                     </Link>
                     <div className="flex items-center gap-6">
                         <Link href="/" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors hidden md:block">Platform</Link>
                         <Link href="/pricing" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors hidden md:block">Pricing</Link>
                         <Link href="/faq" className="text-sm font-medium text-white transition-colors hidden md:block">FAQ</Link>
-                        <button className="text-sm font-semibold bg-white text-zinc-950 px-4 py-2 rounded-md hover:bg-zinc-200 transition-colors">
+                        <button className="text-sm font-semibold bg-white text-zinc-950 px-4 py-2 rounded-md hover:bg-zinc-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                             Client Login
                         </button>
                     </div>
@@ -49,21 +54,21 @@ export default function FAQ() {
             </nav>
 
             {/* FAQ Header */}
-            <section className="pt-24 pb-12 px-6 max-w-3xl mx-auto w-full text-center">
+            <section className="pt-24 pb-12 px-6 max-w-3xl mx-auto w-full text-center z-10">
                 <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Protect Your Business</h1>
                 <p className="text-lg text-zinc-400">Everything you need to know about automated compliance, liability protection, and recovering lost leads.</p>
             </section>
 
             {/* FAQ Accordion List */}
-            <section className="flex-grow pb-24 px-6 max-w-3xl mx-auto w-full">
+            <section className="flex-grow pb-24 px-6 max-w-3xl mx-auto w-full z-10">
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className="bg-zinc-900/80 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition-colors shadow-lg"
+                            className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50 rounded-xl p-6 hover:bg-zinc-900/80 hover:border-zinc-700/80 transition-all duration-300 shadow-lg"
                         >
                             <h3 className="text-lg font-semibold mb-3 text-zinc-100 flex items-start gap-3">
-                                <span className="text-emerald-500 mt-1 flex-shrink-0">
+                                <span className="text-emerald-500 mt-1 flex-shrink-0 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                                 </span>
                                 {faq.question}
@@ -76,17 +81,17 @@ export default function FAQ() {
                 </div>
 
                 {/* Support CTA */}
-                <div className="mt-16 text-center p-8 bg-zinc-950 border border-zinc-800 rounded-2xl shadow-xl">
+                <div className="mt-16 text-center p-8 bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                     <h4 className="text-xl font-bold mb-2">Still have questions?</h4>
                     <p className="text-zinc-400 text-sm mb-6">Our compliance team is ready to review your current setup.</p>
-                    <button className="px-6 py-3 bg-white text-zinc-950 font-bold rounded-lg hover:bg-zinc-200 transition-colors">
+                    <button className="px-6 py-3 bg-white text-zinc-950 font-bold rounded-lg hover:bg-zinc-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         Contact Support
                     </button>
                 </div>
             </section>
 
             {/* Business Info / Footer */}
-            <footer className="border-t border-zinc-900 pt-16 pb-8 bg-zinc-950 mt-auto">
+            <footer className="border-t border-zinc-900/80 pt-16 pb-8 bg-zinc-950/80 backdrop-blur-md mt-auto z-10">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 border-b border-zinc-900 pb-12">
                     <div className="col-span-1 md:col-span-2">
                         <div className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 mb-4">

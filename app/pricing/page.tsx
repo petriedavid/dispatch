@@ -1,20 +1,25 @@
+// app/pricing/page.tsx
 import Link from 'next/link'
+import Particles from '@/lib/particles'
 
 export default function Pricing() {
     return (
-        <main className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-emerald-500/30 font-sans flex flex-col">
+        <main className="min-h-screen bg-transparent text-zinc-50 selection:bg-emerald-500/30 font-sans flex flex-col relative overflow-hidden">
+            {/* Floating Particles Background */}
+            <Particles />
+
             {/* Navigation */}
-            <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-900">
+            <nav className="sticky top-0 z-50 backdrop-blur-md bg-zinc-950/70 border-b border-zinc-900/50">
                 <div className="flex items-center justify-between px-6 py-4 md:px-12 max-w-7xl mx-auto">
-                    <Link href="/" className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2">
-                        <div className="h-3 w-3 bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                    <Link href="/" className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 group">
+                        <div className="h-3 w-3 bg-white rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.6)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.9)] transition-all duration-300"></div>
                         Dispatch
                     </Link>
                     <div className="flex items-center gap-6">
                         <Link href="/" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors hidden md:block">Platform</Link>
                         <Link href="/pricing" className="text-sm font-medium text-white transition-colors hidden md:block">Pricing</Link>
                         <Link href="/faq" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors hidden md:block">FAQ</Link>
-                        <button className="text-sm font-semibold bg-white text-zinc-950 px-4 py-2 rounded-md hover:bg-zinc-200 transition-colors">
+                        <button className="text-sm font-semibold bg-white text-zinc-950 px-4 py-2 rounded-md hover:bg-zinc-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                             Client Login
                         </button>
                     </div>
@@ -22,7 +27,7 @@ export default function Pricing() {
             </nav>
 
             {/* Pricing Section */}
-            <section className="flex-grow py-24 px-6 max-w-6xl mx-auto w-full">
+            <section className="flex-grow py-24 px-6 max-w-6xl mx-auto w-full z-10">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Transparent Pricing</h1>
                     <p className="text-lg text-zinc-400 max-w-2xl mx-auto">Pay for the infrastructure you use. No hidden carrier fees.</p>
@@ -30,7 +35,7 @@ export default function Pricing() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     {/* Basic Plan */}
-                    <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-8 shadow-xl flex flex-col">
+                    <div className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 rounded-2xl p-8 shadow-xl flex flex-col hover:bg-zinc-900/80 transition-all duration-300">
                         <h3 className="text-xl font-bold text-zinc-300 mb-2">Basic</h3>
                         <div className="text-4xl font-extrabold mb-2">$5<span className="text-lg text-zinc-500 font-medium">/mo</span></div>
                         <p className="text-sm text-zinc-400 mb-6">Perfect for testing the API and early integration.</p>
@@ -43,24 +48,24 @@ export default function Pricing() {
                     </div>
 
                     {/* Production Plan */}
-                    <div className="bg-zinc-900 border border-emerald-500/30 rounded-2xl p-8 relative shadow-[0_0_30px_rgba(16,185,129,0.1)] transform md:-translate-y-4 flex flex-col">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-zinc-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    <div className="bg-zinc-900/90 backdrop-blur-xl border border-emerald-500/40 rounded-2xl p-8 relative shadow-[0_0_40px_rgba(16,185,129,0.15)] transform md:-translate-y-4 flex flex-col hover:border-emerald-400/60 transition-all duration-300">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-zinc-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.5)]">
                             Most Popular
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2">Production</h3>
                         <div className="text-4xl font-extrabold mb-2">$45<span className="text-lg text-zinc-500 font-medium">/mo</span></div>
                         <p className="text-sm text-emerald-400/80 mb-6">The ultimate revenue safety net.</p>
                         <ul className="space-y-3 mb-8 text-sm text-zinc-200 flex-grow">
-                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Base platform fee</li>
-                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> $0.05 per SMS segment</li>
-                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Missed-call lead reactivator</li>
-                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full"></div> Immutable ledger access</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div> Base platform fee</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div> $0.05 per SMS segment</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div> Missed-call lead reactivator</li>
+                            <li className="flex items-center gap-2"><div className="h-1.5 w-1.5 bg-emerald-500 rounded-full drop-shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div> Immutable ledger access</li>
                         </ul>
-                        <button className="w-full py-3 bg-white text-zinc-950 rounded-lg font-bold hover:bg-zinc-200 transition-colors">Deploy Now</button>
+                        <button className="w-full py-3 bg-white text-zinc-950 rounded-lg font-bold hover:bg-zinc-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.1)]">Deploy Now</button>
                     </div>
 
                     {/* Volume Plan */}
-                    <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-8 shadow-xl flex flex-col">
+                    <div className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 rounded-2xl p-8 shadow-xl flex flex-col hover:bg-zinc-900/80 transition-all duration-300">
                         <h3 className="text-xl font-bold text-zinc-300 mb-2">Volume</h3>
                         <div className="text-4xl font-extrabold mb-2">Custom</div>
                         <p className="text-sm text-zinc-400 mb-6">For high-throughput systems.</p>
@@ -74,7 +79,7 @@ export default function Pricing() {
             </section>
 
             {/* Business Info / Footer */}
-            <footer className="border-t border-zinc-900 pt-16 pb-8 bg-zinc-950 mt-auto">
+            <footer className="border-t border-zinc-900/80 pt-16 pb-8 bg-zinc-950/80 backdrop-blur-md mt-auto z-10">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 border-b border-zinc-900 pb-12">
                     <div className="col-span-1 md:col-span-2">
                         <div className="font-mono text-xl font-bold tracking-tighter flex items-center gap-2 mb-4">
